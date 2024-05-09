@@ -1,0 +1,62 @@
+.cve-table {
+  width: 80%; /* Adjust width as needed */
+  margin: 0 auto; /* Align center */
+  border-collapse: collapse; /* Collapse borders */
+}
+
+.heading-row th {
+  background-color: #f2f2f2; /* Light grey shade */
+  border: 1px solid #ddd; /* Border lines */
+  padding: 8px; /* Padding */
+  text-align: center; /* Align text center */
+}
+
+.cve-table td {
+  border: 1px solid #ddd; /* Border lines */
+  padding: 8px; /* Padding */
+  text-align: center; /* Align text center */
+}
+
+
+.cve-table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.heading-row th {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.cve-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.outer{
+  display: flex;
+  gap: 50px;
+  margin-top: 20px;
+}
+
+.head{
+  text-align: center;
+}
+
+.label{
+  margin-left: 200px;
+}
+
+.filter{
+ text-align: center;
+ margin-bottom: 20px;
+}
+
+.total{
+  margin-left: 200px;
+}
+
