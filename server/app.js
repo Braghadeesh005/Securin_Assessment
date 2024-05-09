@@ -26,8 +26,6 @@ const getCVEData = async () => {
     }
   };
 
-  
-
 const saveCVEDataToDatabase = async () => {
   const cveData = await getCVEData();
    if (!cveData || !cveData.vulnerabilities) return;
@@ -50,30 +48,13 @@ const saveCVEDataToDatabase = async () => {
             references: cve.cve.references
         });
         
-       
         await newVulnerability.save();
-        console.log(newVulnerability);
     }
     console.log('CVE data saved to database successfully');
 } catch (error) {
     console.error('Error saving CVE data to database:', error);
 }
 };
-
-const fetchCVEData = async (perPage) => {
-  try {
-    
-    const cveData = await CVE.find().limit(perPage); 
-
-   
-    return cveData;
-  } catch (error) {
-   
-    console.error('Error fetching CVE data:', error);
-    throw error;
-  }
-};
-
 
 app.get('/cves/list', async (req, res) => {
   const { perPage, page } = req.query;
@@ -99,8 +80,6 @@ app.get('/cves/filter', async (req, res) => {
   try {
    
     const { cveId, year, score, days } = req.query;
-    console.log(cveId);
-   
     const filter = {};
     if (cveId) {
       filter.id = cveId;
@@ -117,10 +96,7 @@ app.get('/cves/filter', async (req, res) => {
       filter.lastModified = { $gte: lastModifiedThreshold };
     }
 
-   
     const filteredCVEs = await CVE.find(filter);
-    console.log(filteredCVEs)
-   
     res.json(filteredCVEs);
   } catch (error) {
     console.error('Error filtering CVEs:', error);
@@ -133,11 +109,9 @@ app.get('/cves/:cveId', async (req, res) => {
   try {
     const { cveId } = req.params;
     const cveDetails = await CVE.findOne({ id: cveId });
-
     if (!cveDetails) {
       return res.status(404).json({ error: 'CVE not found' });
     }
-
     res.json(cveDetails);
   } catch (error) {
     console.error('Error fetching CVE details:', error);
